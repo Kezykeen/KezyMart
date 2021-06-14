@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item dropdown"><a href="#">@User.Identity.Name</a></li>
+    <li><a asp-controller="Account" asp-action="LogOut">Logout</a></li>
+}
+else
+{
+    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+    <li><a asp-controller="Account" asp-action="Signup">Register</a></li>
+}

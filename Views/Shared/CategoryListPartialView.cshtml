@@ -1,0 +1,11 @@
+﻿@model IEnumerable<KezyMart.Models.Category>
+
+
+@foreach (var item in Model)
+{
+    <ul id="category-list">
+        <li>
+            <a href="@Url.Action("Browse", "Products", new { category = item.Name})">@item.Name</a>
+        </li>
+    </ul>
+}

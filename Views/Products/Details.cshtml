@@ -1,0 +1,40 @@
+﻿@model ProductCategoryViewModel
+@{
+    void formatAmount(decimal amount)
+    {
+        @String.Format("{0:c}", amount);
+    }
+}
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <h2>@Model.product.Name</h2>
+    <p>
+        <img alt="@Model.product.Name"
+             width="240" height="250"
+             src="@Model.product.ArtUrl" />
+    </p>
+</div>
+<div id="album-details">
+    <p>
+        <b><em>Category:</em></b>
+        @Model.category.Name
+    </p>
+    <p>
+        <b><em>Description:</em></b>
+        @Model.product.Description
+    </p>
+    <p>
+        <b><em>Price:</em></b>
+        @{ formatAmount(@Model.product.Price);}
+    </p>
+    <p>
+        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.product.Id }, new { @class = "addToCart" })
+    </p>
+</div>
